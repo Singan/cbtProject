@@ -39,7 +39,8 @@ public class LoginController extends HttpServlet{
 		HttpSession session = request.getSession();
 		
 		session.setAttribute("user", vo);
-		
+		session.setMaxInactiveInterval(60*30);
+
 		if(vo != null) {
 			String value = URLEncoder.encode(vo.getId(),"UTF-8");
 			Cookie c = new Cookie("user", value);

@@ -24,6 +24,6 @@ public class Logout extends HttpServlet{
 		
 		//메인페이지로 이동하기
 		
-		response.sendRedirect(request.getContextPath()+"/main/main");
+		response.sendRedirect(request.getContextPath()+"/main/main.jsp");
 	}
 }
