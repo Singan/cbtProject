@@ -42,9 +42,13 @@
 
 
 	<div id="container">
+
 		<c:forEach var="li" items="${list}">
 			<div class="row">
 				<c:forEach var="i" items="${li}" varStatus="status">
+					<c:if test="${i.quizNo eq 1}">
+						<div>   ${i.quizSub}</div>
+					</c:if>
 					<div class="col-md-6">
 						<div id="quiz${i.quizNo}" style="border: 1px solid black">
 							<div class="ques" style="height: 60%">${i.quizNo}.${i.quizQue}</div>
@@ -62,32 +66,34 @@
 
 		</c:forEach>
 
-		<button type="submit">시험 종료</button>
 	</div>
 
-	<form action="#">
+	<form action="${pageContext.request.contextPath}/quiz/result" method="post">
+		<input type="hidden" name="code" value="${code}" />
 		<div class="OMR">
-			<c:forEach var="i" step="1" begin="1" end="40">
+			<c:forEach var="i" step="1" begin="1" end="${size}">
 				<div class="quiz${i}">
-					<input type="hidden" value="" id="ans${i}">
+					<input type="hidden" value="1" name="ans${i}" id="ans${i}">
 					<c:if test="${i<10}">0</c:if>${i}.
-					<img src="../images/quiz/1.gif" onclick="OMRcheck(${i},this,1)" id="OMR${i}-1">
-					<img src="../images/quiz/2.gif" onclick="OMRcheck(${i},this,2)" id="OMR${i}-2">
-					<img src="../images/quiz/3.gif" onclick="OMRcheck(${i},this,3)" id="OMR${i}-3">
-					<img src="../images/quiz/4.gif" onclick="OMRcheck(${i},this,4)" id="OMR${i}-4">
-					<img src="../images/quiz/5.gif" onclick="OMRcheck(${i},this,5)" id="OMR${i}-5">
+					<img src="../images/quiz/1.gif" onclick="OMRcheck(${i},this,1)"
+						id="OMR${i}-1"> <img src="../images/quiz/2.gif"
+						onclick="OMRcheck(${i},this,2)" id="OMR${i}-2"> <img
+						src="../images/quiz/3.gif" onclick="OMRcheck(${i},this,3)"
+						id="OMR${i}-3"> <img src="../images/quiz/4.gif"
+						onclick="OMRcheck(${i},this,4)" id="OMR${i}-4"> <img
+						src="../images/quiz/5.gif" onclick="OMRcheck(${i},this,5)"
+						id="OMR${i}-5">
 				</div>
 			</c:forEach>
 		</div>
-		<navi:page data="${pageResult}"<%--  code=999 --%>></navi:page>
+		<button type="submit">시험 종료</button>
 	</form>
+	<div>
+		<navi:page data="${pageResult}" code="${code}"></navi:page>
+	</div>
 </body>
 
 <script type="text/javascript">
-
-
-			
-
 		function OMRcheck(no,obj,bunho){
 				
 			if(obj.src.lastIndexOf("blackmark.gif")==-1){
