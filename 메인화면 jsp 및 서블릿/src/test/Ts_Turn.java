@@ -20,13 +20,12 @@ public class Ts_Turn extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String value = "";
-		String select = "select";
-		String tests = "tests";
+		String now = "";
 		int group = Integer.parseInt(request.getParameter("group"));
 		value = request.getParameter("type");
 		
 		if(value.equals("none")) {
-			value = select;
+			value = "select";
 		}
 		
 		TestDAO dao = new TestDAO();
@@ -37,6 +36,7 @@ public class Ts_Turn extends HttpServlet{
 		try {
 			list = dao.subject(group);
 			overview = quiz.overview(group);
+			now = dao.nowtest(group);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw new ServletException(e);
@@ -44,11 +44,10 @@ public class Ts_Turn extends HttpServlet{
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/include/test/turnSelect.jsp");
 		
 		request.setAttribute("list", list);
+		request.setAttribute("nowtest", now);
 		request.setAttribute("over", overview);
 		request.setAttribute("group", group);
 		request.setAttribute("value", value);
-		request.setAttribute("select", select);
-		request.setAttribute("tests",tests);
 		
 		rd.forward(request, response);
 	}

@@ -19,25 +19,31 @@ public class LoginController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//로그인 폼에서 post 방식으로 들어온 파라미터를 정의
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		String idsave = request.getParameter("idsave");
 		
+		//vo, dao를 정의
 		MemberVO vo = new MemberVO();
 		MemberDAO dao = new MemberDAO();
 		
+		//vo에다 파라미터 값을 저장한다.
 		vo.setId(id);
 		vo.setPass(pass);
 		vo.setAccestime(new Date());
 		
 		try {
+			//vo에 dao 실행 결과를 저장한다.
 			vo = dao.login(vo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw new ServletException(e);
 		}
+		//로그인유무를 확인할 세션을 선언한다.
 		HttpSession session = request.getSession();
 		
+		//세션에다 user라는 이름으로 vo(로그인정보)를 올린다.
 		session.setAttribute("user", vo);
 		session.setMaxInactiveInterval(60*30);
 

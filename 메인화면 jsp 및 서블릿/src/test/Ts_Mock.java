@@ -19,9 +19,8 @@ public class Ts_Mock extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String select = "select";
-		String tests = "tests";
 		String value = "tests";
+		String now = "";
 		int code = Integer.parseInt(request.getParameter("code"));
 		int group = Integer.parseInt(request.getParameter("group"));
 		TestDAO dao = new TestDAO();
@@ -35,6 +34,7 @@ public class Ts_Mock extends HttpServlet {
 			list = dao.subject(group);
 			mocklist = dao.mocklist(code);
 			overview = quiz.overview(group);
+			now = dao.nowtest(group);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw new ServletException(e);
@@ -44,10 +44,9 @@ public class Ts_Mock extends HttpServlet {
 		request.setAttribute("mocklist", mocklist);
 		request.setAttribute("over", overview);
 		request.setAttribute("list", list);
+		request.setAttribute("nowtest", now);
 		request.setAttribute("code", code);
 		request.setAttribute("group", group);
-		request.setAttribute("select", select);
-		request.setAttribute("tests", tests);
 		request.setAttribute("value", value);
 		
 		rd.forward(request, response);

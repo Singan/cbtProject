@@ -10,6 +10,37 @@ import common.ConnectionPool;
 
 public class TestDAO {
 	//TODO Object 리스트를 구하는 메소드
+	public String nowtest(int testcode) throws Exception {
+		String now = "";
+		Connection con = null;
+		PreparedStatement ptmt = null;
+		ResultSet rs = null;
+		StringBuffer sql = new StringBuffer();
+		
+		try {
+			con = ConnectionPool.getConnection();
+			
+			sql.append("select test_name from tb_test where test_code = ?");
+			
+			ptmt = con.prepareStatement(sql.toString());
+			
+			ptmt.setInt(1, testcode);
+			
+			rs = ptmt.executeQuery();
+			
+			if(rs.next()) {
+				now = rs.getString("test_name");
+			}
+			
+			return now;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			throw e;
+		}finally {
+			ConnectionPool.releaseConnection(con);
+		}
+	}
+	
 	public List<TestVO> object() throws Exception {
 		Connection con = null;
 		PreparedStatement ptmt = null;

@@ -5,9 +5,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>시험점수</title>
 </head>
 <body>
+<b onclick="first()">첫화면으로</b>
+<table border="2" align="center" width="60%" style="border-collapse:collapse; border:3px #6699cc solid;">
+<tbody>
+<tr>
+<td width="100%"><p>&nbsp;</p><p align="center"><font color="blue">
+<b>과목을 선택하여 주십시요.</b></font></p>
+<p align="center">
 <select name="object" onchange="obj(this.value)">
 	<option <%-- <c:if test="${obj.code ne object}">selected="selected"</c:if> --%>>--과목을 선택하세요--</option>
 	<c:forEach var="obj" items="${list}">
@@ -23,7 +30,8 @@
 		</c:forEach>
 	</select>
 </c:if>
-</select>
+</tbody>
+</table>
 </body>
 <script>
 	function obj(value){
@@ -31,6 +39,9 @@
 	}
 	function sbj(value){
 		location.href="${pageContext.request.contextPath}/test/turn?type=none&group="+value;
+	}
+	function first(){
+		location.href="${pageContext.request.contextPath}/jsp/include/test/testmain.jsp"
 	}
 </script>
 </html>

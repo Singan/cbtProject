@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>희석이</title>
 </head>
 <body>
+
 <c:import url="/css/basicInclude.jsp" />
 <c:import url="/css/test.css" />
 
