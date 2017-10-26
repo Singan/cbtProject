@@ -47,7 +47,7 @@
 			<center>
 
 				<div class="space"></div>
-				<form action="/getquiz" method="post">
+				<form action="${pageContext.request.contextPath}/quiz/quiz" method="post">
 					<table>
 						<tr>
 							<td><span>선택년도</span></td>
@@ -57,7 +57,7 @@
 								onclick="test(${group},this.value)" /> <c:if
 									test="${not empty value}">
 									<c:if test="${value eq 'select'}">
-										<select name="test_code">
+										<select name="code">
 											<c:forEach var="turn" items="${list}">
 												<option value="${turn.code}">${turn.subject}</option>
 											</c:forEach>
