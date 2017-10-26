@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ConnectionPool {
 	private static final int INIT_COUNT = 3;
 	private static List<Connection> free = new ArrayList<>();
@@ -37,37 +38,25 @@ public class ConnectionPool {
 	}
 	
 	public static void releaseConnection(Connection con) {
-		used.remove(con);
-		free.add(con);
+			used.remove(con);
+			free.add(con);
 	}
 	
 	public static void main(String[] args) {
 		try {
 			for (int i = 0; i < 10; i++) {
-				Connection con = 
-						ConnectionPool.getConnection();
+				Connection con = ConnectionPool.getConnection();
 				System.out.println(con);
 				
 				ConnectionPool.releaseConnection(con);
 			}
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+	 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
