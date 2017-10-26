@@ -46,7 +46,9 @@ create table tb_test_quiz (
     example_5 varchar2(100),
     quiz_answer number not null,
     quiz_score number not null,
-    primary key(test_code, quiz_sub, quiz_no)
+    last_no varchar2(50),
+    quiz_code number not null,
+    primary key(test_code, quiz_code)
 );
 
 
