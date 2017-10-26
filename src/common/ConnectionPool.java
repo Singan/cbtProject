@@ -41,45 +41,13 @@ public class ConnectionPool {
 	}
 	
 	public static void releaseConnection(Connection con) {
-<<<<<<< Updated upstream
+
 			used.remove(con);
 			free.add(con);
-=======
+
 		
 		used.remove(con);
 		free.add(con);
->>>>>>> Stashed changes
+
 	}
-	
-/*	public static void main(String[] args) {
-		try {
-<<<<<<< Updated upstream
-			for (int i = 0; i < 10; i++) {
-				Connection con = ConnectionPool.getConnection();
-				System.out.println(con);
-				
-				ConnectionPool.releaseConnection(con);
-=======
-			for(int i = 0; i < 20 ;i++) {
-			Connection con =
-					ConnectionPool.getConnection();
-			System.out.println(con);
-			
-			ConnectionPool.releaseConnection(con);
->>>>>>> Stashed changes
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-<<<<<<< Updated upstream
-	}
-	 
 }
-
-
-
-=======
-	}*/
-}   
->>>>>>> Stashed changes

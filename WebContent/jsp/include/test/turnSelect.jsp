@@ -36,9 +36,9 @@
 						</tr>
 						<c:forEach var="view" items="${over}">
 							<tr>
-								<td bgcolor="EEEEEE">${view.quiz_sub}</td>
+								<td bgcolor="EEEEEE">${view.quizSub}</td>
 								<td bgcolor="EEEEEE">미정</td>
-								<td align="center" bgcolor="EEEEEE">${view.last_no}</td>
+								<td align="center" bgcolor="EEEEEE">${view.quizNo}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

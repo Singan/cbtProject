@@ -20,11 +20,7 @@ public class GetQuiz extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		
-		Enumeration<String> names = request.getParameterNames();
-		
-		
+
 		int code = Integer.parseInt(request.getParameter("code"));
 		int pageNo = 1;
 		int pageNum = 3;
@@ -37,6 +33,7 @@ public class GetQuiz extends HttpServlet {
 		if(dao.tbSize(code)!=null){
 			size = dao.tbSize(code);
 		}
+		List<String> subList = dao.subList(code);
 		List<List<QuizVO>> bigList = new ArrayList<>();
 		for (int i = 0; i < list.size()&i<pageNum; i++) {
 			List<QuizVO> l = new ArrayList<>();
@@ -45,8 +42,6 @@ public class GetQuiz extends HttpServlet {
 				l.add(list.get(i+3));
 			}
 			bigList.add(l);
-			
-			
 		}
 		List<Integer> chkList = new ArrayList<>();
 		int listS = dao.tbSize(code);
@@ -59,7 +54,9 @@ public class GetQuiz extends HttpServlet {
 				chkList.add(Integer.parseInt(answer));
 			}  
 		}
+		
 		PageResult ps = new PageResult(size, pageNo);
+		request.setAttribute("subList", subList);
 		request.setAttribute("size", size);
 		request.setAttribute("pageResult", ps);
 		request.setAttribute("list", bigList);

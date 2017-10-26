@@ -31,9 +31,10 @@
 		</div>
 		<p class="navbar-text title">Signed in as Mark Otto</p>
 		<div id="select">
-			<select><option>1과목</option>
-				<option>2과목</option>
-				<option>3과목</option>
+			<select onchange="boxChange(this)">
+				<c:forEach items="${subList}" var="i">
+					<option value="${i}">${i}</option>
+				</c:forEach>
 			</select>
 		</div>
 	</div>
@@ -47,15 +48,15 @@
 					<c:if test="${i.quizNo eq 1}">
 						<div>${i.quizSub}</div>
 					</c:if>
-					${i}
+
 					<div class="col-md-6">
-						<div id="quiz${i.quizNo}" style="border: 1px solid black">
+						<div id="quiz${i.quizCode}" style="border: 1px solid black">
 							<div class="ques" style="height: 60%">${i.quizNo}.${i.quizQue}</div>
 							<div class="example">
 								<c:forEach var="x" items="${i.examples}" varStatus="z">
-									<img id="${status.count}-${z.count}"
+									<img id="${i.quizCode}-${x.no}"
 										src="../images/quiz/${x.no}.gif"
-										onclick="exampleCheck(${i.quizNo},this,${x.no})"> ${x.example}
+										onclick="exampleCheck(${i.quizCode},this,${x.no})"> ${x.example}
 									</c:forEach>
 							</div>
 						</div>
@@ -64,7 +65,6 @@
 			</div>
 		</c:forEach>
 	</div>
-	
 	<form action="${pageContext.request.contextPath}/quiz/result"
 		method="post" name="form">
 		<input type="hidden" name="code" value="${code}" />
@@ -89,7 +89,8 @@
 			</c:forEach>
 		</div>
 		<input type="hidden" value="" name="pageNo"> <input
-			type="hidden" value="" name="code">
+			type="hidden" value="" name="code"> <input type="hidden"
+			value="" name="sub">
 		<button type="submit">시험 종료</button>
 	</form>
 	<div>
@@ -115,6 +116,7 @@
 		}else{
 			obj.src="../images/quiz/"+bunho+".gif";
 			$("#"+no+"-"+bunho).attr('src', "../images/quiz/"+bunho+".gif");
+			noans(no,bunho);
 		}
 		}
 		function exampleCheck(no,obj,bunho){
@@ -132,9 +134,11 @@
 				}
 				$("#"+no+"-"+bunho).attr('src', "../images/quiz/"+bunho+"red.gif");
 				ans(no,bunho);
+			
 			}else{
 				obj.src="../images/quiz/"+bunho+".gif";
 				$("#OMR"+no+"-"+bunho).attr('src', "../images/quiz/"+bunho+".gif");
+				noans(no,bunho);
 			}
 			
 		}
@@ -143,7 +147,32 @@
 			list = document.querySelector("#ans"+no);
 			console.dir(list.id+":"+list.value);
 		}
+		function noans(no,bunho){
+			$("#ans"+no).attr('value',-1);
+			list = document.querySelector("#ans"+no);
+			console.dir(list.id+":"+list.value);
+			
+		}
+		window.onload=function(){
+		var list = ${chkList};
+		for(var i = 0 ; i <list.length;i++){
+			if(list[i]!=-1){
+				$("#"+(i+1)+"-"+list[i]).attr('src', "../images/quiz/"+list[i]+"red.gif");
+			}
+		}
 		
+	
+		}
+		function boxChange(obj){
+			var f = document.form;
+				alert(obj.value);
+				f.code.value = ${code};
+				f.pageNo.value = ${pageResult.pageNo};
+				console.dir(f.pageNo.value);
+				f.action = "${pageContext.request.contextPath}/quiz/quiz";
+				f.submit();
+			
+		}
 		
 	</script>
 

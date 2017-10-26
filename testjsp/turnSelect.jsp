@@ -13,7 +13,7 @@
 	}
 </script>
 <body>
-	<form action="/getquiz">
+	<form action="/quiz">
 		<table>
 			<tr>
 				<td><span>선택년도</span></td>
