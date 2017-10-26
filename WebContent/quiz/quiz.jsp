@@ -40,52 +40,56 @@
 
 	</nav>
 
-
 	<div id="container">
-
 		<c:forEach var="li" items="${list}">
 			<div class="row">
 				<c:forEach var="i" items="${li}" varStatus="status">
 					<c:if test="${i.quizNo eq 1}">
-						<div>   ${i.quizSub}</div>
+						<div>${i.quizSub}</div>
 					</c:if>
+					${i}
 					<div class="col-md-6">
 						<div id="quiz${i.quizNo}" style="border: 1px solid black">
 							<div class="ques" style="height: 60%">${i.quizNo}.${i.quizQue}</div>
 							<div class="example">
-								<c:forEach var="x" items="${i.examples}">
-									<img id="${i.quizNo}-${x.no}" src="../images/quiz/${x.no}.gif"
+								<c:forEach var="x" items="${i.examples}" varStatus="z">
+									<img id="${status.count}-${z.count}"
+										src="../images/quiz/${x.no}.gif"
 										onclick="exampleCheck(${i.quizNo},this,${x.no})"> ${x.example}
 									</c:forEach>
 							</div>
-
 						</div>
 					</div>
 				</c:forEach>
 			</div>
-
 		</c:forEach>
-
 	</div>
-
-	<form action="${pageContext.request.contextPath}/quiz/result" method="post">
+	
+	<form action="${pageContext.request.contextPath}/quiz/result"
+		method="post" name="form">
 		<input type="hidden" name="code" value="${code}" />
 		<div class="OMR">
-			<c:forEach var="i" step="1" begin="1" end="${size}">
-				<div class="quiz${i}">
-					<input type="hidden" value="1" name="ans${i}" id="ans${i}">
-					<c:if test="${i<10}">0</c:if>${i}.
-					<img src="../images/quiz/1.gif" onclick="OMRcheck(${i},this,1)"
-						id="OMR${i}-1"> <img src="../images/quiz/2.gif"
-						onclick="OMRcheck(${i},this,2)" id="OMR${i}-2"> <img
-						src="../images/quiz/3.gif" onclick="OMRcheck(${i},this,3)"
-						id="OMR${i}-3"> <img src="../images/quiz/4.gif"
-						onclick="OMRcheck(${i},this,4)" id="OMR${i}-4"> <img
-						src="../images/quiz/5.gif" onclick="OMRcheck(${i},this,5)"
-						id="OMR${i}-5">
+			<c:forEach var="val" items="${chkList}" varStatus="i">
+				<div class="quiz${i.count}">
+					<input type="hidden" value="${chkList[i.count-1]}"
+						name="ans${i.count}" id="ans${i.count}">
+					<c:if test="${i.count<10}">0</c:if>${i.count}.
+					<c:forEach begin="1" var="x" end="5">
+						<c:if test="${val eq x}">
+							<img src="../images/quiz/blackmark.gif"
+								onclick="OMRcheck(${i.count},this,${x})" id="OMR${i.count}-${x}">
+						</c:if>
+						<c:if test="${val ne x}">
+							<img src="../images/quiz/${x}.gif"
+								onclick="OMRcheck(${i.count},this,${x})" id="OMR${i.count}-${x}">
+						</c:if>
+					</c:forEach>
+
 				</div>
 			</c:forEach>
 		</div>
+		<input type="hidden" value="" name="pageNo"> <input
+			type="hidden" value="" name="code">
 		<button type="submit">시험 종료</button>
 	</form>
 	<div>
@@ -94,8 +98,8 @@
 </body>
 
 <script type="text/javascript">
+		
 		function OMRcheck(no,obj,bunho){
-				
 			if(obj.src.lastIndexOf("blackmark.gif")==-1){
 			list = document.querySelectorAll(".OMR>.quiz" + no + ">img");
 			for(var i = 0; i<list.length;i++){
@@ -139,6 +143,8 @@
 			list = document.querySelector("#ans"+no);
 			console.dir(list.id+":"+list.value);
 		}
+		
+		
 	</script>
 
 </html>

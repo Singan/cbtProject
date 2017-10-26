@@ -8,24 +8,36 @@
 <c:if test="${data.count ne 0 }">
 	<nav>
 		<ul class="pagination">
-			<li><a
-				href="<c:choose><c:when test="${data.prev}">
-			${pageContext.request.contextPath}/quiz/quiz?pageNo=${data.pageNo-1}&code=${code}
-			</c:when>
-			<c:otherwise>#</c:otherwise></c:choose>"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+			<li><a href="#" onclick="doPrev(${data.prev},${data.pageNo},${code})" aria-label="Previous"> <span
+					aria-hidden="true">&laquo;</span>
 			</a></li>
 			<li><a href="#">${data.pageNo}</a></li>
 			<li><a
-				href="<c:choose>
-			<c:when test="${data.next}">
-			${pageContext.request.contextPath}/quiz/quiz?pageNo=${data.pageNo+1}&code=${code}
-			</c:when>
-			<c:otherwise>#</c:otherwise>
-			</c:choose>
-			"
+				href="#" onclick="doNext(${data.next},${data.pageNo},${code})"
 				aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 			</a></li>
 		</ul>
 	</nav>
 </c:if>
+<script>
+ function doPrev(chk,pageNo,code){
+	var f = document.form;
+	if(chk){
+		f.code.value = code
+		f.pageNo.value = pageNo-1;
+		console.dir(f.pageNo.value);
+		f.action = "${pageContext.request.contextPath}/quiz/quiz";
+		f.submit();
+	}
+ }
+ function doNext(chk,pageNo,code){
+		var f = document.form;
+		if(chk){
+			f.code.value = code;
+			f.pageNo.value = pageNo+1;
+			console.dir(f.pageNo.value);
+			f.action = "${pageContext.request.contextPath}/quiz/quiz";
+			f.submit();
+		}
+	 }
+</script>
