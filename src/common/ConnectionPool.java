@@ -8,27 +8,30 @@ import java.util.List;
 
 public class ConnectionPool {
 	private static final int INIT_COUNT = 3;
-	private static List<Connection> free = new ArrayList<>();
-	private static List<Connection> used = new ArrayList<>();
+	private static List<Connection> free = new ArrayList();
+	private static List<Connection> used = new ArrayList();
 	
 	static {
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			for (int i = 0; i < INIT_COUNT; i++) {
+		
+			for (int i = 0; i < INIT_COUNT; i++)
+			{
 				Connection con = DriverManager.getConnection(
-					"jdbc:oracle:thin:@localhost:1521:xe", 
-					"hr", "hr"
-				);	
+						"jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
 				free.add(con);
 			}
+			
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
-	public static Connection getConnection() 
-			throws Exception {
-		if (free.isEmpty()) {
+	public static Connection getConnection() throws Exception{
+		if(free.isEmpty()) {
 			throw new Exception("사용할 수 있는 커넥션이 없습니다.");
 		}
 		
@@ -38,25 +41,45 @@ public class ConnectionPool {
 	}
 	
 	public static void releaseConnection(Connection con) {
+<<<<<<< Updated upstream
 			used.remove(con);
 			free.add(con);
+=======
+		
+		used.remove(con);
+		free.add(con);
+>>>>>>> Stashed changes
 	}
 	
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		try {
+<<<<<<< Updated upstream
 			for (int i = 0; i < 10; i++) {
 				Connection con = ConnectionPool.getConnection();
 				System.out.println(con);
 				
 				ConnectionPool.releaseConnection(con);
+=======
+			for(int i = 0; i < 20 ;i++) {
+			Connection con =
+					ConnectionPool.getConnection();
+			System.out.println(con);
+			
+			ConnectionPool.releaseConnection(con);
+>>>>>>> Stashed changes
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+<<<<<<< Updated upstream
 	}
 	 
 }
 
 
 
+=======
+	}*/
+}   
+>>>>>>> Stashed changes

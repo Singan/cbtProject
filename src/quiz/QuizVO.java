@@ -1,78 +1,34 @@
 package quiz;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class QuizVO {
-	public Integer getQuizScore() {
-		return quizScore;
+	private String quiz_sub;
+	private String sub_name;
+	private int test_code;
+	private int last_no;
+	public String getQuiz_sub() {
+		return quiz_sub;
 	}
-
-	public void setQuizScore(Integer quizScore) {
-		this.quizScore = quizScore;
+	public void setQuiz_sub(String quiz_sub) {
+		this.quiz_sub = quiz_sub;
 	}
-
-	public Integer getQuizCode() {
-		return quizCode;
+	public String getSub_name() {
+		return sub_name;
 	}
-
-	public void setQuizCode(Integer quizCode) {
-		this.quizCode = quizCode;
+	public void setSub_name(String sub_name) {
+		this.sub_name = sub_name;
 	}
-
-	String quizSub, quizQue;
-	Integer quizCode;
-	List<ExampleVO> examples = new ArrayList<>();
-
-	public List<ExampleVO> getExamples() {
-		return examples;
+	public int getTest_code() {
+		return test_code;
 	}
-
-	public void setExamples(ExampleVO examples) {
-		this.examples.add(examples);
+	public void setTest_code(int test_code) {
+		this.test_code = test_code;
 	}
-
-	Integer testCode, quizNo, quizanwser, quizScore;
-
-	public String getQuizSub() {
-		return quizSub;
+	public int getLast_no() {
+		return last_no;
 	}
-
-	public void setQuizSub(String quizSub) {
-		this.quizSub = quizSub;
+	public void setLast_no(int last_no) {
+		this.last_no = last_no;
 	}
-
-	public String getQuizQue() {
-		return quizQue;
-	}
-
-	public void setQuizQue(String quizQue) {
-		this.quizQue = quizQue;
-	}
-
-	public Integer getTestCode() {
-		return testCode;
-	}
-
-	public void setTestCode(Integer testCode) {
-		this.testCode = testCode;
-	}
-
-	public Integer getQuizNo() {
-		return quizNo;
-	}
-
-	public void setQuizNo(Integer quizNo) {
-		this.quizNo = quizNo;
-	}
-
-	public Integer getQuizAnswer() {
-		return quizanwser;
-	}
-
-	public void setQuizAnswer(Integer quizanwser) {
-		this.quizanwser = quizanwser;
-	}
-
+	
 	
 }
