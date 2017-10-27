@@ -11,6 +11,7 @@
 	<body>
 		<div>
 			<h2>관리 메뉴 메인임</h2>
+			<a href="${pageContext.request.contextPath}/main/main">집으로</a><br>
 			<a href="${pageContext.request.contextPath}/manage/managemember">회원 관리</a><br>
 			<a href="${pageContext.request.contextPath}/manage/managetest">문제 관리</a>
 		</div>

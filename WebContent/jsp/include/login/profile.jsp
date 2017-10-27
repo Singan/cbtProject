@@ -53,6 +53,6 @@
 		location.href="${pageContext.request.contextPath}/login/logout";
 	}
 	function mypage(){
-		location.href="${pageContext.request.contextPath/}"
+		location.href="${pageContext.request.contextPath}"
 	}
 </script>

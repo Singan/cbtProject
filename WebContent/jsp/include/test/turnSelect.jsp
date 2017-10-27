@@ -49,7 +49,7 @@
 			<center>
 
 				<div class="space"></div>
-				<form action="/quiz" method="post">
+				<form action="/quiz/quiz" method="post">
 					<table>
 						<tr>
 							<td><span>선택년도</span></td>
