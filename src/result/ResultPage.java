@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import login.MemberVO;
 import quiz.AnswerVO;
 import quiz.QuizDAO;
 import quiz.QuizVO;
 import record.RecordDAO;
 import record.RecordDetailsDomain;
 import record.RecordDomain;
+import test.TestVO;
 
 @WebServlet("/quiz/result")
 public class ResultPage extends HttpServlet {
@@ -46,22 +48,26 @@ public class ResultPage extends HttpServlet {
 				score += list.get(i).getQuizScore();
 				correctList.add(list.get(i));
 				rdd.setRecordAnswer(Integer.parseInt(answer));
-				rdd.setRecordResult("y");
+				rdd.setRecordResult("Y");
 			} else {
 				wrongList.add(list.get(i));
-				rdd.setRecordResult("x");
+				rdd.setRecordResult("N");
 				rdd.setRecordAnswer(0);
 			}
 			reList.add(rdd);
 		}
 
-		String id = (String) session.getAttribute("user");
-		rDAO.insertRecord(id, rno, code, score);
+		MemberVO id = (MemberVO) session.getAttribute("user");
+		System.out.println("id : "+ id.getId());
+		System.out.println("rno : "+ rno);
+		System.out.println("code : "+ code);
+		System.out.println("score : "+ score);
+		rDAO.insertRecord(id.getId(), rno, code, score);
 		rDAO.insertRecordDetail(reList);
 		request.setAttribute("wrongList", wrongList);
 		request.setAttribute("correctList", correctList);
 		request.setAttribute("score", score);
-		RequestDispatcher rd = request.getRequestDispatcher("/quiz/result.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/quiz/result.jsp");
 		rd.forward(request, response);
 
 	}

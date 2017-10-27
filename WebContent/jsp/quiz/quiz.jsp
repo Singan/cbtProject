@@ -169,7 +169,7 @@
 				f.code.value = ${code};
 				f.pageNo.value = ${pageResult.pageNo};
 				console.dir(f.pageNo.value);
-				f.action = "${pageContext.request.contextPath}/quiz/quiz";
+				f.action = "${pageContext.request.contextPath}/jsp/quiz/quiz";
 				f.submit();
 			
 		}

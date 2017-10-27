@@ -39,7 +39,7 @@ public class LoginController extends HttpServlet{
 		
 		//세션에다 user라는 이름으로 vo(로그인정보)를 올린다.
 		session.setAttribute("user", vo);
-		session.setMaxInactiveInterval(60*30);
+		
 
 		if(vo != null) {
 			String value = URLEncoder.encode(vo.getId(),"UTF-8");

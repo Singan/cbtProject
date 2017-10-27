@@ -62,7 +62,7 @@ public class GetQuiz extends HttpServlet {
 		request.setAttribute("list", bigList);
 		request.setAttribute("code", code);
 		request.setAttribute("chkList", chkList);
-		RequestDispatcher rd = request.getRequestDispatcher("/quiz/quiz.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/quiz/quiz.jsp");
 		rd.forward(request, response);
 
 	}

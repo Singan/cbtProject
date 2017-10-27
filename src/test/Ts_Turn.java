@@ -32,7 +32,7 @@ public class Ts_Turn extends HttpServlet{
 		List<TestVO> list = new ArrayList<>();
 		QuizDAO quiz = new QuizDAO();
 		List<QuizVO> overview = new ArrayList();
-		System.out.println(group);
+		
 		try {
 			list = dao.subject(group);
 			overview = quiz.overview(group);

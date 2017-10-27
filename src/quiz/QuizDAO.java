@@ -22,7 +22,7 @@ public class QuizDAO {
 			
 			sql.append("select distinct quiz_sub, quiz_no ")
 			   .append("from tb_test_quiz ")
-			   .append("where last_no='y' and test_code = ( ")
+			   .append("where last_no='Y' and test_code = ( ")
 			   .append("select test_code ")
 			   .append("from tb_test ")
 			   .append("where group_code = ? ")
@@ -243,7 +243,7 @@ public class QuizDAO {
 		try {
 			con = ConnectionPool.getConnection();
 			sql.append(
-					"select DISTINCT quiz_sub from (select quiz_code,quiz_sub from tb_test_quiz where test_code = 999 order by quiz_code)"
+					"select DISTINCT quiz_sub from (select quiz_code,quiz_sub from tb_test_quiz where test_code = ? order by quiz_code)"
 					);
 			ptmt = con.prepareStatement(sql.toString());
 			ptmt.setLong(1, testCode);

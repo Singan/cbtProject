@@ -25,10 +25,10 @@ public class RecordDAO {
 			sql.append("select seq_record_no.nextval from dual");
 			ptmt = con.prepareStatement(sql.toString());
 
-			rs=ptmt.executeQuery();
+			rs = ptmt.executeQuery();
 			rs.next();
 			rNo = rs.getInt("NEXTVAL");
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,24 +76,25 @@ public class RecordDAO {
 	public void insertRecordDetail(List<RecordDetailsDomain> list) {
 		Connection con = null;
 		PreparedStatement ptmt = null;
-	
+
 		StringBuffer sql = new StringBuffer();
-	
+
 		try {
 			con = ConnectionPool.getConnection();
-			sql.append("insert into tb_record_details(record_no,"
-					+ " quiz_no, record_result,record_answer,"
-					+ " quiz_answer) values "
-					+ "(?,?,?,?,?)");
-			ptmt = con.prepareStatement(sql.toString());
-			for(int i = 0; i<list.size();i++){
-			ptmt.setInt(1,list.get(i).getRecordNo());	
-			ptmt.setInt(2,list.get(i).getQuizNo());	
-			ptmt.setString(3,list.get(i).getRecordResult());	
-			ptmt.setInt(4,list.get(i).getRecordAnswer());	
-			ptmt.setInt(5,list.get(i).getQuizAnswer());	
+			sql.append("insert into tb_record_details(record_no," + " quiz_no, record_result,record_answer,"
+					+ " quiz_answer) values " + "(?,?,?,?,?)");
+
+			for (int i = 0; i < list.size(); i++) {
+				ptmt = con.prepareStatement(sql.toString());
+				ptmt.setInt(1, list.get(i).getRecordNo());
+				ptmt.setInt(2, list.get(i).getQuizNo());
+				ptmt.setString(3, list.get(i).getRecordResult());
+				ptmt.setInt(4, list.get(i).getRecordAnswer());
+				ptmt.setInt(5, list.get(i).getQuizAnswer());
+
+				ptmt.executeUpdate();
 			}
-			ptmt.executeUpdate();
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,7 +107,6 @@ public class RecordDAO {
 			ConnectionPool.releaseConnection(con);
 
 		}
-	
 
 	}
 }

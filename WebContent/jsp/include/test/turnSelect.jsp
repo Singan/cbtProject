@@ -38,9 +38,9 @@
 						</tr>
 						<c:forEach var="view" items="${over}">
 							<tr>
-								<td bgcolor="EEEEEE">${view.quiz_sub}</td>
 								<td bgcolor="EEEEEE">미정</td>
-								<td align="center" bgcolor="EEEEEE">${view.last_no}</td>
+								<td bgcolor="EEEEEE">${view.quizSub}</td>
+								<td align="center" bgcolor="EEEEEE">${view.lastNo}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -49,7 +49,7 @@
 			<center>
 
 				<div class="space"></div>
-				<form action="/quiz/quiz" method="post">
+				<form action="${pageContext.request.contextPath}/quiz/quiz" method="post">
 					<table>
 						<tr>
 							<td><span>선택년도</span></td>
