@@ -243,7 +243,7 @@ public class QuizDAO {
 		try {
 			con = ConnectionPool.getConnection();
 			sql.append(
-					"select DISTINCT quiz_sub from (select quiz_code,quiz_sub from tb_test_quiz order by quiz_code)"
+					"select DISTINCT quiz_sub from (select quiz_code,quiz_sub from tb_test_quiz where test_code = 999 order by quiz_code)"
 					);
 			ptmt = con.prepareStatement(sql.toString());
 			ptmt.setLong(1, testCode);
