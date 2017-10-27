@@ -25,11 +25,11 @@
 	<nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}">
-				<img alt="처음으로" src="../images/quiz/blackmark.gif">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/test/object">
+				처음으로
 			</a>
 		</div>
-		<p class="navbar-text title">Signed in as Mark Otto</p>
+		<p class="navbar-text title">배틀</p>
 		<div id="select">
 			<select onchange="boxChange(this)">
 				<c:forEach items="${subList}" var="i">
@@ -82,7 +82,7 @@
 						<c:if test="${val ne x}">
 							<img src="../images/quiz/${x}.gif"
 								onclick="OMRcheck(${i.count},this,${x})" id="OMR${i.count}-${x}">
-						</c:if>
+						</c:if> 
 					</c:forEach>
 
 				</div>
@@ -93,9 +93,9 @@
 			value="" name="sub">
 		<button type="submit">시험 종료</button>
 	</form>
-	<div>
+
 		<navi:page data="${pageResult}" code="${code}"></navi:page>
-	</div>
+	
 </body>
 
 <script type="text/javascript">

@@ -37,13 +37,14 @@ public class ResultPage extends HttpServlet {
 		RecordDAO rDAO = new RecordDAO();
 		int rno = rDAO.selectRecordNo();
 		List<RecordDetailsDomain> reList = new ArrayList<>();
-		
+		List<String> subList = new QuizDAO().subList(code);
 		for (int i = 0; i < list.size(); i++) {
 			String answer = request.getParameter("ans" + (i + 1));
 			RecordDetailsDomain rdd = new RecordDetailsDomain();
 			rdd.setRecordNo(rno);
 			rdd.setQuizNo(i+1);
 			rdd.setQuizAnswer(list.get(i).getQuizAnswer());
+		
 			if (answer.equals(String.valueOf(list.get(i).getQuizAnswer()))) {
 				score += list.get(i).getQuizScore();
 				correctList.add(list.get(i));
@@ -58,15 +59,14 @@ public class ResultPage extends HttpServlet {
 		}
 
 		MemberVO id = (MemberVO) session.getAttribute("user");
-		System.out.println("id : "+ id.getId());
-		System.out.println("rno : "+ rno);
-		System.out.println("code : "+ code);
-		System.out.println("score : "+ score);
+		
 		rDAO.insertRecord(id.getId(), rno, code, score);
 		rDAO.insertRecordDetail(reList);
 		request.setAttribute("wrongList", wrongList);
 		request.setAttribute("correctList", correctList);
 		request.setAttribute("score", score);
+		request.setAttribute("subList", subList);
+		request.setAttribute("reList", reList);
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/quiz/result.jsp");
 		rd.forward(request, response);
 

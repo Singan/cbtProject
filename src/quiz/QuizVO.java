@@ -74,5 +74,12 @@ public class QuizVO {
 		this.quizanwser = quizanwser;
 	}
 
+	@Override
+	public String toString() {
+		return "QuizVO [quizSub=" + quizSub + ", quizQue=" + quizQue + ", quizCode=" + quizCode + ", examples="
+				+ examples + ", testCode=" + testCode + ", quizNo=" + quizNo + ", quizanwser=" + quizanwser
+				+ ", quizScore=" + quizScore + "]";
+	}
+	
 	
 }
