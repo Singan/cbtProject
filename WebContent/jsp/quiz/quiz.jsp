@@ -7,15 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>문제</title>
-
-
 </head>
-
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="../css/quiz.css">
+<link rel="stylesheet" href="../css/quiz.css?a=111">
 <script src="https://code.jquery.com/jquery-3.2.1.js"
 	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
 	crossorigin="anonymous"></script>
@@ -25,11 +22,10 @@
 	<nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/test/object">
-				처음으로
-			</a>
+			<a class="navbar-brand"
+				href="${pageContext.request.contextPath}/test/object"> 처음으로 </a>
 		</div>
-		<p class="navbar-text title">배틀</p>
+		<p class="navbar-text title">테스트</p>
 		<div id="select">
 			<select onchange="boxChange(this)">
 				<c:forEach items="${subList}" var="i">
@@ -40,7 +36,6 @@
 	</div>
 
 	</nav>
-
 	<div id="container">
 		<c:forEach var="li" items="${list}">
 			<div class="row">
@@ -48,7 +43,6 @@
 					<c:if test="${i.quizNo eq 1}">
 						<div>${i.quizSub}</div>
 					</c:if>
-
 					<div class="col-md-6">
 						<div id="quiz${i.quizCode}" style="border: 1px solid black">
 							<div class="ques" style="height: 60%">${i.quizNo}.${i.quizQue}</div>
@@ -57,7 +51,8 @@
 									<img id="${i.quizCode}-${x.no}"
 										src="../images/quiz/${x.no}.gif"
 										onclick="exampleCheck(${i.quizCode},this,${x.no})"> ${x.example}
-									</c:forEach>
+										<br>
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -82,21 +77,23 @@
 						<c:if test="${val ne x}">
 							<img src="../images/quiz/${x}.gif"
 								onclick="OMRcheck(${i.count},this,${x})" id="OMR${i.count}-${x}">
-						</c:if> 
+						</c:if>
 					</c:forEach>
-
 				</div>
 			</c:forEach>
 		</div>
 		<input type="hidden" value="" name="pageNo"> <input
 			type="hidden" value="" name="code"> <input type="hidden"
 			value="" name="sub">
-			<div class="exit">
-		<button type="submit">시험 종료</button></div>
+
+		<div class="exit">
+			<button type="submit">시험 종료</button>
+		</div>
+
 	</form>
 
-		<navi:page data="${pageResult}" code="${code}"></navi:page>
-	
+	<navi:page data="${pageResult}" code="${code}"></navi:page>
+
 </body>
 
 <script type="text/javascript">
