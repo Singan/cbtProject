@@ -87,7 +87,7 @@
 			value="" name="sub">
 
 		<div class="exit">
-			<button type="submit">시험 종료</button>
+			<button type="submit" class="exit">시험 종료</button>
 		</div>
 
 	</form>
