@@ -9,11 +9,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>과목 추가</title>
+		<link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/manage.css" />
 		<script>
 		</script>
 	</head>
 	<body>
-		<div>
+		<div class="body">
 			<h2>과목 추가</h2>
 			<div>
 				<form action="${pageContext.request.contextPath}/manage/insertsub" method="post">
@@ -32,7 +33,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div><button>아이고</button></div>
+					<div><button>추가</button></div>
 				</form>
 			</div>
 		</div>

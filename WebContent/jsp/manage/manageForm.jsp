@@ -7,13 +7,14 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>관리 메뉴</title>
+		<link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/manage.css" /> 
 	</head>
 	<body>
-		<div>
+		<div class="body">
 			<h2>관리 메뉴 메인임</h2>
-			<a href="${pageContext.request.contextPath}/main/main">집으로</a><br>
-			<a href="${pageContext.request.contextPath}/manage/managemember">회원 관리</a><br>
-			<a href="${pageContext.request.contextPath}/manage/managetest">문제 관리</a>
+			<a class="btn" href="${pageContext.request.contextPath}/main/main">집으로</a><br>
+			<a class="btn" href="${pageContext.request.contextPath}/manage/managemember">회원 관리</a><br>
+			<a class="btn" href="${pageContext.request.contextPath}/manage/managetest">문제 관리</a>
 		</div>
 	</body>
 </html>

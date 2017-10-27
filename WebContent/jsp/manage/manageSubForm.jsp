@@ -9,24 +9,25 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>과목 관리</title>
+		<link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/manage.css" />
 	</head>
 	<body>
-		<div>
+		<div class="body">
 			<h2>과목 관리 메뉴임</h2>
-			<a href="${pageContext.request.contextPath}/manage/managetest?
-			subject=${subgroup}&turn=${turngroup}">돌아가라</a>
+			<a class="btn" href="${pageContext.request.contextPath}/manage/managetest?
+			subject=${subgroup}&turn=${turngroup}">시험 관리 메뉴로</a>
 			
-			<div style="overflow-y: scroll; width: 50%; height: 200px;">
+			<div style="overflow-y: scroll; height: 200px;">
 				<c:forEach var="sub" items="${sublist}" varStatus="loop">
 					<div>
 						<a>${sub.quizSub} ( ${sub.quizNo}문제 )</a>
 						
-						<a href="${pageContext.request.contextPath}/manage/managequiz?
+						<a class="btn" href="${pageContext.request.contextPath}/manage/managequiz?
 						testcode=${testcode}&subject=${subgroup}&
 						turn=${turngroup}&quizsub=${sub.quizSub}">문제목록</a>
 						
 						<c:if test="${loop.last}">
-							<a href="${pageContext.request.contextPath}/manage/deletesub?
+							<a class="btn" href="${pageContext.request.contextPath}/manage/deletesub?
 							testcode=${testcode}&quizsub=${sub.quizSub}&
 							subject=${subgroup}&turn=${turngroup}">삭제</a>
 						</c:if>
@@ -35,7 +36,7 @@
 				</c:forEach>
 			</div>
 			
-			<a href="${pageContext.request.contextPath}/manage/insertsubform?
+			<a class="btn" href="${pageContext.request.contextPath}/manage/insertsubform?
 			subject=${subgroup}&turn=${turngroup}&testcode=${testcode}"
 			>과목 추가</a>
 		</div>

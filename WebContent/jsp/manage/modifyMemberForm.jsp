@@ -9,11 +9,12 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>회원 정보 수정</title>
+		<link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/manage.css" />
 	</head>
 	<body>
-		<div>
+		<div class="body">
 			<h2>${member.id} 회원 정보 수정</h2>
-			<a href="${pageContext.request.contextPath}/manage/managemember">회원 목록으로</a><br>
+			<a class="btn" href="${pageContext.request.contextPath}/manage/managemember">회원 목록으로</a><br>
 			<div>
 				<form action="${pageContext.request.contextPath}/manage/modifymember" method="post">
 					<input name="id" type="hidden" value="${member.id}">
@@ -46,7 +47,7 @@
 							</tr>
 						</tbody>
 					</table>
-					<div><button>아이고</button></div>
+					<div><button>수정</button></div>
 				</form>
 			</div>
 		</div>

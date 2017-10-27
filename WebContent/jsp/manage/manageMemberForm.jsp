@@ -9,6 +9,8 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>회원 관리</title>
+		<c:import url="/css/basicInclude.jsp" />
+		<link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/manage.css" />
 		<script>
 			function deletemember(id){
 				var chk;
@@ -23,25 +25,31 @@
 		</script>
 	</head>
 	<body>
-		<div>
+		<div class="body">
 			<h2>회원 관리 메뉴임</h2>
-			<a href="${pageContext.request.contextPath}/manage">관리 메인으로</a><br>
-			<div style="overflow-y: scroll; width: 50%; height: 300px;">
+			<a class="btn" href="${pageContext.request.contextPath}/manage">관리 메인으로</a><br>
+			<div style="overflow-y: scroll; height: 300px;">
+				<table class="table">
+					<tr>
+						<th>아이디</th>
+						<th>닉네임</th>
+						<th>가입일</th>
+						<td></td>
+					</tr>
 				<c:forEach var="member" items="${memberlist}">
-					<div>
-						<a>${member.id}</a>
-						<a>${member.name}</a>
-						<a>${member.admin}</a>
-						<a><fmt:formatDate value="${member.regDate}"
-						pattern="yyyy-MM-dd HH:mm:ss"/></a>
-						<a href="${pageContext.request.contextPath}/manage/modifymemberform?
+					<tr>
+						<td>${member.id}</td>
+						<td>${member.name}</td>
+						<td><fmt:formatDate value="${member.regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+						<td><a class="btn" href="${pageContext.request.contextPath}/manage/modifymemberform?
 						id=${member.id}">
 						수정</a>
-						<a href=# id="deletebox"
+						<a class="btn" href=# id="deletebox"
 						onclick="deletemember('${member.id}')">
-						삭제</a>
-					</div>
+						삭제</a></td>
+					</tr>
 				</c:forEach>
+				</table>
 			</div>
 		</div>
 	</body>

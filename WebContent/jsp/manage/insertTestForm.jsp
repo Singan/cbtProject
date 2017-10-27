@@ -9,9 +9,10 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>시험 추가</title>
+		<link rel=stylesheet type="text/css" href="${pageContext.request.contextPath}/css/manage.css" />
 	</head>
 	<body>
-		<div>
+		<div class="body">
 			<h2>시험 추가 메뉴임</h2>
 			<form action="${pageContext.request.contextPath}/manage/inserttest" method="post">
 				<input name="groupCode" type="hidden" 
@@ -30,14 +31,14 @@
 				<table>
 					<tbody>
 						<tr>
-							<th scope="row"><div>이름을 뭘로할까</div></th>
+							<th scope="row"><div>이름</div></th>
 							<td><input name="testName" type="text" required
 							oninvalid="setCustomValidity('입력하라우')"
 							oninput="setCustomValidity('')"><td>
 						</tr>
 						<c:if test="${not empty turngroup}">
 							<tr>
-								<th scope="row"><div>시험일자를 뭘로할까</div></th>
+								<th scope="row"><div>시험일자</div></th>
 								<td><input name="testDate" type="date" required
 								oninvalid="setCustomValidity('선택하라우')"
 								oninput="setCustomValidity('')"><td>
@@ -45,7 +46,7 @@
 						</c:if>
 					</tbody>
 				</table>
-				<div><button>아이고</button></div>
+				<div><button>추가</button></div>
 			</form>
 		</div>
 	</body>
