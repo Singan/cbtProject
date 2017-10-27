@@ -1,27 +1,32 @@
-package main;
+package manage;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/main/main")
-public class Main extends HttpServlet{
+@WebServlet("/manage/deletemember")
+public class DeleteMember extends HttpServlet{
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String id = request.getParameter("id");
 		
+		ManageDAO mdao = new ManageDAO();
 		
-		RequestDispatcher rd = request.getRequestDispatcher(
-				"/jsp/main/main.jsp"
-		);
+		try {
+			
+			mdao.deleteMember(id);
+			
+		} catch (Exception e) {
+			throw new ServletException(e);
+		}
 		
-		rd.forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/manage/managemember");
 	}
 	
 }
