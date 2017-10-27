@@ -34,7 +34,7 @@ public class JoinController extends HttpServlet{
 			throw new ServletException(e);
 		}
 		
-		response.sendRedirect(request.getContextPath()+"/member/joinform");
+		response.sendRedirect(request.getContextPath()+"/main/main");
 	}
 
 	

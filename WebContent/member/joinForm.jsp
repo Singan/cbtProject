@@ -14,11 +14,11 @@
 	
 	  function idchk()
 	{
-		var frm = document.frm;	
+		var joinform = document.joinform;	
 		var id = document.getElementById("userId");
-		frm.action = "${pageContext.request.contextPath}/member/memberidchk?id="+id.value;
+		joinform.action = "${pageContext.request.contextPath}/member/memberidchk"
 		
-		frm.submit();
+		joinform.submit();
 	}
 	  function check(){
 		  if(!document.joinform.id.value){
