@@ -45,5 +45,8 @@ html, body {
 	width: 1300px;
 	text-align: center;
 }
-
+.exit{
+	clear: both;
+	margin-top: 20px;
+}
 </style>

@@ -91,7 +91,8 @@
 		<input type="hidden" value="" name="pageNo"> <input
 			type="hidden" value="" name="code"> <input type="hidden"
 			value="" name="sub">
-		<button type="submit">시험 종료</button>
+			<div class="exit">
+		<button type="submit">시험 종료</button></div>
 	</form>
 
 		<navi:page data="${pageResult}" code="${code}"></navi:page>
