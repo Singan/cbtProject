@@ -1,4 +1,4 @@
-package manage;
+package record;
 
 import java.util.Date;
 

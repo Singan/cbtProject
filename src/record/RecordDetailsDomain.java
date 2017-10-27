@@ -1,4 +1,4 @@
-package manage;
+package record;
 
 public class RecordDetailsDomain {
 	private int recordNo;
@@ -6,7 +6,6 @@ public class RecordDetailsDomain {
 	private String recordResult;
 	private int recordAnswer;
 	private int quizAnswer;
-	
 	public int getRecordNo() {
 		return recordNo;
 	}
