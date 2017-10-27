@@ -39,7 +39,7 @@
                             <h4>Send Message</h4>
                         </div>
                         <div id="events" class="tab-pane">
-                            <h4>Events</h4>
+                            <h4>Logout</h4>
                         </div>
                     </div>
                 </div>
@@ -51,5 +51,8 @@
 <script>
 	function logout(){
 		location.href="${pageContext.request.contextPath}/login/logout";
+	}
+	function mypage(){
+		location.href="${pageContext.request.contextPath/}"
 	}
 </script>

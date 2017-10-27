@@ -10,16 +10,18 @@
 .space {
 	height: 30px;
 }
-#main{
+
+#main {
 	width: 65%;
 }
-
 </style>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/jsp/include/test/testmain.jsp">첫화면으로</a>
+	<a
+		href="${pageContext.request.contextPath}/jsp/include/test/testmain.jsp">첫화면으로</a>
 	<center>
-		<div id="main" align="center" style="border-collapse:collapse; border:3px #6699cc solid;">
+		<div id="main" align="center"
+			style="border-collapse: collapse; border: 3px #6699cc solid;">
 			<p align="center">
 				<font size="5"><b>미니 프로젝트</b></font><font size="5" color="blue"><b>
 						범위 선택</b></font>
@@ -36,9 +38,9 @@
 						</tr>
 						<c:forEach var="view" items="${over}">
 							<tr>
-								<td bgcolor="EEEEEE">${view.quizSub}</td>
+								<td bgcolor="EEEEEE">${view.quiz_sub}</td>
 								<td bgcolor="EEEEEE">미정</td>
-								<td align="center" bgcolor="EEEEEE">${view.quizNo}</td>
+								<td align="center" bgcolor="EEEEEE">${view.last_no}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -47,7 +49,7 @@
 			<center>
 
 				<div class="space"></div>
-				<form action="${pageContext.request.contextPath}/quiz/quiz" method="post">
+				<form action="/quiz" method="post">
 					<table>
 						<tr>
 							<td><span>선택년도</span></td>
@@ -75,7 +77,8 @@
 										<select name="first_code"
 											onchange="mockgo(${group},this.value)">
 											<c:forEach var="turn" items="${list}">
-												<option value="${turn.code}"<c:if test="${turn.code eq requestScope.code}">selected="selected"</c:if>>${turn.subject}</option>
+												<option value="${turn.code}"
+													<c:if test="${turn.code eq requestScope.code}">selected="selected"</c:if>>${turn.subject}</option>
 											</c:forEach>
 										</select>
 										<c:if test="${not empty mocklist}">
