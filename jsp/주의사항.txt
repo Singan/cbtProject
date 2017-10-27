@@ -1,3 +1,0 @@
-프로그램 기동시
-
-Object.jsp와 turnSelect.jsp파일에 <option> tag에서 <c:if> 부분 주석을 헤제하고 실행할것
