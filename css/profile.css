@@ -1,5 +1,9 @@
 @charset "UTF-8";
-body {background: #ffffff;}
+body {
+	background-image: url("../image/12.jpg");
+	background-size: 100%;
+	background-attachment: scroll;
+}
 .desc{
 	margin: 40px 0 0 400px;
 	padding-top: 80px;
