@@ -40,7 +40,7 @@
 							<tr>
 								<td bgcolor="EEEEEE">미정</td>
 								<td bgcolor="EEEEEE">${view.quizSub}</td>
-								<td align="center" bgcolor="EEEEEE">${view.lastNo}</td>
+								<td align="center" bgcolor="EEEEEE">${view.quizNo}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

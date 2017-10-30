@@ -31,7 +31,7 @@ public class Ts_Mock extends HttpServlet {
 		
 		try {
 			list = dao.subject(group);
-			mocklist = dao.mocklist(code);
+			mocklist = dao.mocklist(code, group);
 			overview = quiz.overview(group);
 			now = dao.nowtest(group);
 		} catch (Exception e) {

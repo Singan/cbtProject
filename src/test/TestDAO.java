@@ -106,7 +106,7 @@ public class TestDAO {
 		}
 	}
 	
-	public List<TestVO> mocklist(int code) throws Exception{
+	public List<TestVO> mocklist(int testCode, int groupCode) throws Exception{
 		Connection con = null;
 		PreparedStatement ptmt = null;
 		ResultSet rs = null;
@@ -118,14 +118,16 @@ public class TestDAO {
 			
 			sql.append("select * ")
 			   .append("from tb_test ")
-			   .append(" where test_date>(")
+			   .append(" where test_date>=(")
 			   .append("select test_date ")
 			   .append("from tb_test ")
-			   .append("where test_code = ?)");
+			   .append("where test_code = ?)")
+			   .append(" and group_code = ?");
 			
 			ptmt = con.prepareStatement(sql.toString());
 			
-			ptmt.setInt(1, code);
+			ptmt.setInt(1, testCode);
+			ptmt.setInt(2, groupCode);
 			
 			rs = ptmt.executeQuery();
 			

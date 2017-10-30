@@ -39,7 +39,7 @@ public class ModifyMember extends HttpServlet{
 			throw new ServletException(e);
 		}
 		
-		response.sendRedirect(request.getContextPath()+"/manage/modifymemberform?id="+id);
+		response.sendRedirect(request.getContextPath()+"/manage/managemember");
 	}
 	
 }

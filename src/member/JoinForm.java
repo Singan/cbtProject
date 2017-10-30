@@ -16,7 +16,7 @@ public class JoinForm extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		RequestDispatcher rd = request.getRequestDispatcher(
-				"/member/joinForm.jsp"
+				"/jsp/include/member/joinForm.jsp"
 				);
 		rd.forward(request, response);
 	}

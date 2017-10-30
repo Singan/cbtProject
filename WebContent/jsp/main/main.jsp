@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>미니 프로젝트 CBT형식</title>
+<title>대한민국 최고 문제은행 사이트 석 CBT</title>
 </head>
 <c:import url="/css/basicInclude.jsp" />
 <body>

@@ -36,6 +36,7 @@ public class LoginController extends HttpServlet{
 		
 		//로그인유무를 확인할 세션을 선언한다.
 		HttpSession session = request.getSession();
+		session.setMaxInactiveInterval(60*60*24);
 		
 		//세션에다 user라는 이름으로 vo(로그인정보)를 올린다.
 		session.setAttribute("user", vo);
